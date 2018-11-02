@@ -66,8 +66,21 @@
 	</div>
 </section>
 
-<section class="portfolio">
+<section id="portfolio" class="portfolio">
 	<h1 class="title">Portfolio</h1>
+	<a href="/portfolio/new">Add a project</a>
+	<div class="projects-container">
+		
+			<% projects.forEach(function(project){ %>
+				<div class="indv-project-container">
+					<!--<h3><%= project.title %></h3>-->
+					<img src="<%= project.image %>">
+				</div>
+			<% }); %>		
+		
+	</div>
+
+		
 </section>
 
 
