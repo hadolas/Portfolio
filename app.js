@@ -15,28 +15,13 @@ var projectSchema = new mongoose.Schema({
     image: String
 });
 
+// Compile Project Schema into Model
 var Project = mongoose.model("Project", projectSchema);
 
-// Project.create({
-//   title: "Knitjitsu",
-//   image: "https://source.unsplash.com/B1ARzIEjltU"
-// }, function(err, project){
-//     if(err){
-//         console.log(err);
-//     } else {
-//         console.log("NEW PROJECT: ")
-//         console.log(project);
-//     }
-// });
 
-// var projects = [
-//         {title:"Knitjitsu", image:"https://source.unsplash.com/B1ARzIEjltU"},
-//         {title:"Pesky Belly", image:"https://source.unsplash.com/J1FRkbeM9O4"},
-//         {title:"The Little Pastry Shop", image:"https://source.unsplash.com/heq7jKHAKfo"}
-//     ]
-
+// INDEX route
 app.get("/", function(req, res){
-    // res.render("index", {projects:projects});
+    // get all projects from DB
     Project.find({}, function(err, projects){
        if(err){
            console.log(err);
@@ -46,15 +31,18 @@ app.get("/", function(req, res){
     });
 });
 
+// NEW route
 app.get("/portfolio/new", function(req, res){
     res.render("newProject.ejs");
 })
 
+// CREATE route
 app.post("/", function(req, res){
+    // get data from newProject form
     var title = req.body.title;
     var image = req.body.image;
     var newProject = {title:title, image:image};
-    // projects.push(newProject);
+    // create and save newly created project to DB
     Project.create(newProject, function(err, project){
         if(err){
             console.log(err);
