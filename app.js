@@ -53,6 +53,11 @@ app.post("/", function(req, res){
     });
 });
 
+// SHOW route
+app.get("/portfolio/:id", function(req, res) {
+   res.render("show"); 
+});
+
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Portfolio server running");
 });
