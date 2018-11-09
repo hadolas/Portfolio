@@ -12,7 +12,8 @@ app.use(express.static(__dirname+"/public"));
 // Project Schema
 var projectSchema = new mongoose.Schema({
     title: String,
-    image: String
+    image: String,
+    summary: String
 });
 
 // Compile Project Schema into Model
@@ -41,7 +42,8 @@ app.post("/", function(req, res){
     // get data from newProject form
     var title = req.body.title;
     var image = req.body.image;
-    var newProject = {title:title, image:image};
+    var summary = req.body.summary;
+    var newProject = {title:title, image:image, summary:summary};
     // create and save newly created project to DB
     Project.create(newProject, function(err, project){
         if(err){
