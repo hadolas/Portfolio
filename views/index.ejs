@@ -73,8 +73,12 @@
 		
 			<% projects.forEach(function(project){ %>
 				<div class="indv-project-container">
-					<!--<h3><%= project.title %></h3>-->
+					<div class="project-info">
+						<p><%= project.title %></p>
+					</div>
 					<img src="<%= project.image %>">
+					<button class="left-button">View Code</button>
+					<button class="right-button">More Info</button>
 				</div>
 			<% }); %>		
 		

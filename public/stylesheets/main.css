@@ -178,12 +178,74 @@ header nav li:before {
 }
 
 .portfolio .indv-project-container {
-	flex-basis: 49%;
+	flex: 1 1 45%;
+	position: relative;
+	margin:1%;
+	background-color: rgba(0,0,0, 0.7);
+	color: rgba(255,255,255, 1);
 }
 
 .portfolio .indv-project-container img {
-	width:98%;
-	margin: 2%;
+	width:100%;
+}
+
+.portfolio .indv-project-container:hover img {
+	opacity: 0.3;
+	filter: grayscale(100%);
+}
+
+.portfolio .indv-project-container .project-info {
+	position: absolute;
+	left: 8px;
+	opacity: 0;
+	top: 0;
+}
+
+.portfolio .indv-project-container .project-info p {
+	margin: 0 0 10px 0;
+}
+
+.portfolio .indv-project-container:hover .project-info {
+	animation: 0.3s info-fadeIn ease-in forwards;
+}
+
+.portfolio .indv-project-container button {
+	position: absolute;
+	width: 46%;
+	bottom: 0;
+	opacity: 0;
+}
+
+.portfolio .indv-project-container:hover button {
+	animation: 0.3s button-fadeIn ease-in forwards;
+}
+
+.portfolio .indv-project-container .left-button {
+	left: 4px;
+}
+
+.portfolio .indv-project-container .right-button {
+	right: 4px;
+}
+
+@keyframes info-fadeIn {
+	60% {
+		opacity: 0.2;
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(10px);
+	}
+}
+
+@keyframes button-fadeIn {
+	60% {
+		opacity: 0.2;
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(-10px);
+	}
 }
 
 /*Portfolio: Project Form Styles*/
