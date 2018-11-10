@@ -229,6 +229,7 @@ header nav li:before {
 	width: 46%;
 	bottom: 0;
 	opacity: 0;
+	white-space: pre;
 }
 
 .portfolio .indv-project-container:hover a.button {
