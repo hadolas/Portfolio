@@ -1,21 +1,12 @@
 <% include ./partials/header %>
 
-<header>
-	<nav>
-		<li><a href="#">Home</a></li>
-		<li><a href="#">About</a></li>
-		<li><a href="#">Portfolio</a></li>
-		<li><a href="#">Contact</a></li>
-	</nav>
-</header>
-
 <section class="home">
 	<div class="background-image"></div>
 	<div class="home-content">
 		<h1>Hadiyah Mughal</h1>
 		<h1>&lt; Web Developer &gt;</h1>
 	</div>
-	<button>View portfolio</button>
+	<a class="button" href="#">View Portfolio</a>
 </section>
 
 <section class="about">
@@ -68,7 +59,7 @@
 
 <section id="portfolio" class="portfolio">
 	<h1 class="title">Portfolio</h1>
-	<a href="/portfolio/new">Add a project</a>
+	<a class="link" href="/portfolio/new">Add a project</a>
 	<div class="projects-container">
 		
 			<% projects.forEach(function(project){ %>
@@ -78,14 +69,11 @@
 						<p><%= project.summary %></p>
 					</div>
 					<img src="<%= project.image %>">
-					<button class="left-button">View Code</button>
-					<button class="right-button">More Info</button>
+					<a class="button left-button" href="#">View Code</a>
+					<a class="button right-button" href="#">More Info</a>
 				</div>
 			<% }); %>		
-		
 	</div>
-
-		
 </section>
 
 

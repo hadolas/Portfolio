@@ -1,4 +1,4 @@
-/*General Styles*/
+/* General Styles */
 html {
 	font-family: 'Libre Franklin', sans-serif;
 }
@@ -15,21 +15,27 @@ li {
 }
 
 a {
-    text-decoration: none;
+	text-decoration: none;
+}
+
+/* .link are 'a tags' which DON'T take the shape of a button */
+.link {
     color: #62b24e;
+}
+
+.link:hover {
+	text-shadow: 0px 0px 1px #459e60;
+	color: #459e60;
+	text-decoration: underline;
 }
 
 .title {
 	margin: 30px 0;
 }
 
-a:hover {
-	text-shadow: 0px 0px 1px #459e60;
-	color: #459e60;
-	text-decoration: underline;
-}
 
-button {
+/* .button are 'a tags' which take the shape of a button */
+.button, button {
 	background-color: rgba(0,0,0, 0.7);
 	color: white;
 	border: none;
@@ -37,9 +43,11 @@ button {
 	height: 30px;
 	font-variant: small-caps;
 	cursor: pointer;
+	text-align: center;
+	line-height: 2em;
 }
 
-input:focus, button:focus {
+input:focus{
 	outline-color: #459e60;
 }
 
@@ -54,7 +62,7 @@ section:not(.home):not(.project-form):nth-child(even){
 	background-color: #f7f7f4;
 }
 
-/*Header Styles*/
+/* Header Styles */
 header {
 	position: absolute;
 	background-color: rgba(0,0,0, 0.9);
@@ -69,7 +77,6 @@ header nav {
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
-	/*width: 50%;*/
 }
 
 header nav li {
@@ -86,7 +93,7 @@ header nav li:before {
 	color: #008000;
 }
 
-/*Home Styles*/
+/* Home Styles */
 .home {
 	display: flex;
 	justify-content: center;
@@ -117,7 +124,7 @@ header nav li:before {
 	border-width: 0.5px;
 }
 
-/*About Styles*/
+/* About Styles */
 .about p {
 	text-align: center;
 	line-height: 25px;
@@ -170,7 +177,7 @@ header nav li:before {
 	margin-top: 10px;
 }
 
-/*Portfolio Styles*/
+/* Portfolio Styles */
 .portfolio .projects-container {
 	display: flex;
 	flex-wrap: wrap;
@@ -209,14 +216,14 @@ header nav li:before {
 	animation: 0.3s info-fadeIn ease-in forwards;
 }
 
-.portfolio .indv-project-container button {
+.portfolio .indv-project-container .button {
 	position: absolute;
 	width: 46%;
 	bottom: 0;
 	opacity: 0;
 }
 
-.portfolio .indv-project-container:hover button {
+.portfolio .indv-project-container:hover a.button {
 	animation: 0.3s button-fadeIn ease-in forwards;
 }
 
@@ -228,6 +235,7 @@ header nav li:before {
 	right: 4px;
 }
 
+/* Fade-in animation for 'project-info' */
 @keyframes info-fadeIn {
 	60% {
 		opacity: 0.2;
@@ -238,6 +246,7 @@ header nav li:before {
 	}
 }
 
+/* Fade-in animation for buttons on each indv-project-container */
 @keyframes button-fadeIn {
 	60% {
 		opacity: 0.2;
@@ -269,11 +278,15 @@ header nav li:before {
 .project-form-section input, .project-form-section button {
 	display: block;
 	margin: 5px 0;
-	padding: 5px;
 	width: 100%;
 	box-sizing: border-box;
 }
 
+.project-form-section input {
+	padding: 5px;
+}
+
 .project-form-section button {
+	margin-top: 1em;
 	cursor: pointer;
 }
