@@ -57,7 +57,15 @@ app.post("/", function(req, res){
 
 // SHOW route
 app.get("/portfolio/:id", function(req, res) {
-   res.render("show"); 
+    // find Project by id
+    Project.findById(req.params.id, function(err, result){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("show", {project:result});
+        }
+    });
+
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){

@@ -58,7 +58,15 @@ section {
 	width: 100%;
 }
 
-section:not(.home):not(.project-form):nth-child(even){
+.section-margin {
+	margin-top: 70px;
+}
+
+/*section:not(.home):not(.project-form-section):nth-child(even){*/
+/*	background-color: #f7f7f4;*/
+/*}*/
+
+section:not(.home):nth-child(even){
 	background-color: #f7f7f4;
 }
 
@@ -259,11 +267,10 @@ header nav li:before {
 
 /*Portfolio: Project Form Styles*/
 .project-form-section {
-	background-color: #f7f7f4;
-	margin-top: 70px;
+	/*background-color: #f7f7f4;*/
+	/*margin-top: 70px;*/
 }
 .project-form-section h1 {
-	background-color: white;
 	width: 100%;
 	margin: 0;
 	padding:20px 0;
