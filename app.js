@@ -4,7 +4,8 @@ var express    = require("express"),
     mongoose   = require("mongoose"),
     Project    = require("./models/project");
 
-mongoose.connect("mongodb://localhost/portfolio");
+var databaseUrl = process.env.DATABASEURL
+mongoose.connect(databaseUrl);
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
