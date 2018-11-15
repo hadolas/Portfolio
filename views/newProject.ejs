@@ -4,9 +4,11 @@
 <section class="section-margin project-form-section">
     <h1>Add a Project</h1>
     <form action="/" method="POST">
-        <input type="text" name="title" placeholder="Title">
-        <input type="text" name="image" placeholder="Image URL">
-        <input type="text" name="summary" placeholder="Project Summary">
+        <input type="text" name="project[title]" placeholder="Title">
+        <input type="text" name="project[image]" placeholder="Image URL">
+        <input type="text" name="project[github]" placeholder="GitHub Link">
+        <input type="text" name="project[summary]" placeholder="Project Summary">
+        <textarea name="project[post]" placeholder="Project Post"></textarea>
         <button>Add this project!</button>
     </form>
 </section>

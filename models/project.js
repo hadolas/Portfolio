@@ -4,7 +4,9 @@ var mongoose = require("mongoose");
 var projectSchema = new mongoose.Schema({
     title: String,
     image: String,
-    summary: String
+    github: String,
+    summary: String,
+    post: String
 });
 
 // Compile Project Schema into Model

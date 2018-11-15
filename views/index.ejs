@@ -69,7 +69,7 @@
 						<p><%= project.summary %></p>
 					</div>
 					<img src="<%= project.image %>">
-					<a class="button left-button" href="#"><i class="fab fa-github"></i><span>     View Code</span></a>
+					<a class="button left-button" href="<%=project.github%>"><i class="fab fa-github"></i><span>     View Code</span></a>
 					<a class="button right-button" href="/portfolio/<%=project._id%>"><span>More Info     </span><i class="fas fa-chevron-circle-right"></i></a>
 				</div>
 			<% }); %>		
