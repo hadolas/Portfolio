@@ -1,23 +1,14 @@
-var express = require("express"),
-    app = express(),
+var express    = require("express"),
+    app        = express(),
     bodyParser = require("body-parser"),
-    mongoose = require("mongoose");
+    mongoose   = require("mongoose"),
+    Project    = require("./models/project");
 
 mongoose.connect("mongodb://localhost/portfolio");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname+"/public"));
-
-// Project Schema
-var projectSchema = new mongoose.Schema({
-    title: String,
-    image: String,
-    summary: String
-});
-
-// Compile Project Schema into Model
-var Project = mongoose.model("Project", projectSchema);
 
 
 // INDEX route
@@ -35,7 +26,7 @@ app.get("/", function(req, res){
 // NEW route
 app.get("/portfolio/new", function(req, res){
     res.render("newProject.ejs");
-})
+});
 
 // CREATE route
 app.post("/", function(req, res){
