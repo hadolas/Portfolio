@@ -30,14 +30,7 @@ app.get("/portfolio/new", function(req, res){
 });
 
 // CREATE route
-app.post("/", function(req, res){
-    // get data from newProject form
-    // var title = req.body.title;
-    // var image = req.body.image;
-    // var github = req.body.github;
-    // var summary = req.body.summary;
-    // var post = req.body.post;
-    // var newProject = {title:title, image:image, github:github, summary:summary, post:post};
+app.post("/portfolio", function(req, res){
     // create and save newly created project to DB
     Project.create(req.body.project, function(err, project){
         if(err){
@@ -59,7 +52,6 @@ app.get("/portfolio/:id", function(req, res) {
             res.render("show", {project:result});
         }
     });
-
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
