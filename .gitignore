@@ -1,4 +1,4 @@
 test_data.txt
 node_modules
-routes/index.js
+; routes/index.js
 ; views/register.ejs
