@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="/stylesheets/main.css">
     </head>
     <body>
-
     <header>
     	<nav>
     		<li><a class="link" href="#">Home</a></li>
@@ -16,4 +15,13 @@
     		<li><a class="link" href="#">Contact</a></li>
     	</nav>
     </header>
+    
+<!--<a class="link" style="position:absolute; color:red; right:0;" href="#">Logout</a>-->
 
+    <aside>
+    <% if(currentUser){  %>
+	    <li><a class="link" style="color:red;" href="#">Signed in as: <%=currentUser.username%></a></li>
+	    <li><a class="link" style="color:red;" href="#">Logout</a></li>
+	<% } %>
+	</aside>
+	

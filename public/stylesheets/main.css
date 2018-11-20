@@ -66,7 +66,7 @@ section {
 /*	background-color: #f7f7f4;*/
 /*}*/
 
-section:not(.home):nth-child(even){
+section:not(.home):nth-child(odd){
 	background-color: #f7f7f4;
 }
 
@@ -75,7 +75,7 @@ header {
 	position: absolute;
 	background-color: rgba(0,0,0, 0.9);
 	width: 80%;
-	margin: 10px auto;
+	margin: 20px auto;
 	padding: 15px 20px;
 	z-index: 1;
 	opacity: 0.8;
@@ -99,6 +99,22 @@ header nav li {
 header nav li:before {
 	content: ">> ";
 	color: #008000;
+}
+
+/* Aside Styles */
+aside {
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 0.7em;
+	right: 5px;
+	position: absolute;
+}
+
+aside li {
+	margin: 0 10px;
+	text-transform: capitalize;
+	font-variant: small-caps;
+	
 }
 
 /* Home Styles */
