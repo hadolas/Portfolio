@@ -1,14 +1,16 @@
 var express = require("express");
 var router = express.Router();
 var Project = require("../models/project");
+var middlewareObject = require("../middleware")
+
 
 // NEW route
-router.get("/portfolio/new", function(req, res){
+router.get("/portfolio/new", middlewareObject.isLoggedIn, function(req, res){
     res.render("newProject.ejs");
 });
 
 // CREATE route
-router.post("/portfolio", function(req, res){
+router.post("/portfolio", middlewareObject.isLoggedIn, function(req, res){
     // create and save newly created project to DB
     Project.create(req.body.project, function(err, project){
         if(err){
