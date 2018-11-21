@@ -1,0 +1,19 @@
+<% include ./partials/header %>
+
+
+<section class="section-margin project-form-section">
+    <h1>Edit <%= project.title %></h1>
+    <form action="/portfolio/<%=project._id%>?_method=PUT" method="POST">
+        <input type="text" name="project[title]" value="<%=project.title%>">
+        <input type="text" name="project[image]" value="<%=project.image%>">
+        <input type="text" name="project[github]" value="<%=project.github%>">
+        <input type="text" name="project[summary]" value="<%=project.summary%>">
+        <textarea name="project[post]"><%=project.post%></textarea>
+        <button>Update this project!</button>
+    </form>
+</section>
+
+<a class="link" href="/#portfolio">Go back to Portfolo section</a>
+
+
+<% include ./partials/footer %>

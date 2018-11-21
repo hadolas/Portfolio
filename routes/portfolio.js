@@ -34,4 +34,29 @@ router.get("/portfolio/:id", function(req, res) {
     });
 });
 
+
+// EDIT ROUTE
+router.get("/portfolio/:id/edit", middlewareObject.isLoggedIn, function(req, res) {
+   Project.findById(req.params.id, function(err, result){
+       if(err){
+           console.log(err);
+       } else {
+           res.render("editProject", {project:result});
+       }
+   }); 
+});
+
+
+// UPDATE ROUTE
+router.put("/portfolio/:id", middlewareObject.isLoggedIn, function(req, res){
+    Project.findByIdAndUpdate(req.params.id, req.body.project, function(err, result){
+        if(err){
+            console.log(err);
+            res.redirect("/");
+        } else {
+            res.redirect("/portfolio/"+req.params.id);
+        }
+    });
+});
+
 module.exports = router;
