@@ -61,7 +61,7 @@ router.put("/portfolio/:id", middlewareObject.isLoggedIn, function(req, res){
 
 
 // DESTROY ROUTE
-router.delete("/portfolio/:id", function(req, res){
+router.delete("/portfolio/:id", middlewareObject.isLoggedIn, function(req, res){
    Project.findByIdAndRemove(req.params.id, function(err){
        if(err){
            console.log(err);

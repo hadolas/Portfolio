@@ -9,19 +9,17 @@
     <body>
     <header>
     	<nav>
-    		<li><a class="link" href="#">Home</a></li>
-    		<li><a class="link" href="#">About</a></li>
-    		<li><a class="link" href="#">Portfolio</a></li>
-    		<li><a class="link" href="#">Contact</a></li>
+    		<li><a class="link" href="/">Home</a></li>
+    		<li><a class="link" href="/#about">About</a></li>
+    		<li><a class="link" href="/#portfolio">Portfolio</a></li>
+    		<li><a class="link" href="/#contact">Contact</a></li>
     	</nav>
     </header>
-    
-<!--<a class="link" style="position:absolute; color:red; right:0;" href="#">Logout</a>-->
 
     <aside>
     <% if(currentUser){  %>
 	    <li><a class="link" style="color:red;" href="#">Signed in as: <%=currentUser.username%></a></li>
-	    <li><a class="link" style="color:red;" href="#">Logout</a></li>
+	    <li><a class="link" style="color:red;" href="/logout">Logout</a></li>
 	<% } %>
 	</aside>
 	
