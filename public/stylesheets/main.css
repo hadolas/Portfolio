@@ -39,12 +39,15 @@ a {
 	background-color: rgba(0,0,0, 0.7);
 	color: white;
 	border: none;
-	width: 40%;
 	height: 30px;
 	font-variant: small-caps;
 	cursor: pointer;
 	text-align: center;
 	line-height: 2em;
+}
+
+.button {
+	width: 40%;
 }
 
 input:focus, textarea:focus{

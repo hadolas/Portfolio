@@ -59,4 +59,16 @@ router.put("/portfolio/:id", middlewareObject.isLoggedIn, function(req, res){
     });
 });
 
+
+// DESTROY ROUTE
+router.delete("/portfolio/:id", function(req, res){
+   Project.findByIdAndRemove(req.params.id, function(err){
+       if(err){
+           console.log(err);
+       } else {
+           res.redirect("/#portfolio");
+       }
+   }); 
+});
+
 module.exports = router;

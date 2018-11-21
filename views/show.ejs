@@ -3,4 +3,8 @@
     <h1><%=project.title%></h1>
     <p><%=project.summary%></p>
     <p><%=project.post%></p>
+    
+    <form action="/portfolio/<%=project._id%>?_method=DELETE" method="POST">
+        <button>Delete Project</button>
+    </form>
 </section>
