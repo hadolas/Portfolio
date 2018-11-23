@@ -4,12 +4,29 @@
 <section class="section-margin project-form-section">
     <h1>Add a Project</h1>
     <form action="/portfolio" method="POST">
-        <input type="text" name="project[title]" placeholder="Title">
-        <input type="text" name="project[image]" placeholder="Image URL">
-        <input type="text" name="project[github]" placeholder="GitHub Link">
-        <input type="text" name="project[summary]" placeholder="Project Summary">
-        <textarea name="project[post]" placeholder="Project Post"></textarea>
-        <button>Add this project!</button>
+        <div>
+            <label>Project Title</label>
+            <input type="text" name="project[title]" placeholder="Title">    
+        </div>
+        <div>
+            <label>Main Image</label>
+            <input type="text" name="project[image]" placeholder="Image URL">    
+        </div>
+        <div>
+            <label>GitHub Link</label>
+            <input type="text" name="project[github]" placeholder="GitHub Link">
+        </div>
+        <div>
+            <label>Project Summary</label>
+            <input type="text" name="project[summary]" placeholder="Project Summary">    
+        </div>
+        <div>
+            <label>Post</label>
+            <textarea name="project[post]" placeholder="Project Post"></textarea>    
+        </div>
+        <div>
+            <button>Add this project!</button>    
+        </div>
     </form>
 </section>
 

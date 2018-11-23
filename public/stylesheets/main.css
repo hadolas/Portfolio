@@ -73,6 +73,44 @@ section:not(.home):nth-child(odd){
 	background-color: #f7f7f4;
 }
 
+/* Form Styles */
+form {
+	min-width: 60%;
+	padding: 20px;
+	background-color: #f7f7f4
+}
+
+form input, form button, form textarea, form label {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+form div {
+	margin-bottom: 1em;
+}
+
+form label{
+	font-size: 0.8em;
+	padding-left: 2px;
+	color: #459e60;
+}
+
+form input {
+	padding: 5px;
+}
+
+form button {
+	cursor: pointer;
+}
+
+form textarea {
+	resize: vertical;
+	min-height: 10em;
+	padding: 5px;
+	font-family: inherit;
+}
+
 /* Header Styles */
 header {
 	position: absolute;
@@ -286,10 +324,6 @@ aside li {
 }
 
 /*Portfolio: Project Form Styles*/
-.project-form-section {
-	/*background-color: #f7f7f4;*/
-	/*margin-top: 70px;*/
-}
 .project-form-section h1 {
 	width: 100%;
 	margin: 0;
@@ -297,30 +331,9 @@ aside li {
 	text-align: center;
 }
 
-.project-form-section form {
-	min-width: 50%;
-	padding: 20px;
-}
-
-.project-form-section input, .project-form-section button, .project-form-section textarea {
-	display: block;
-	margin: 5px 0;
-	width: 100%;
-	box-sizing: border-box;
-}
-
-.project-form-section input {
-	padding: 5px;
-}
-
-.project-form-section button {
-	margin-top: 1em;
-	cursor: pointer;
-}
-
-.project-form-section textarea {
-	resize: vertical;
-	min-height: 6em;
-	padding: 5px;
-	font-family: inherit;
+/* Contact Styles */
+.contact p {
+	text-align: center;
+	line-height: 25px;
+	width: 70%;
 }

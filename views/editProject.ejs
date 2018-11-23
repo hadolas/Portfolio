@@ -4,12 +4,29 @@
 <section class="section-margin project-form-section">
     <h1>Edit <%= project.title %></h1>
     <form action="/portfolio/<%=project._id%>?_method=PUT" method="POST">
-        <input type="text" name="project[title]" value="<%=project.title%>">
-        <input type="text" name="project[image]" value="<%=project.image%>">
-        <input type="text" name="project[github]" value="<%=project.github%>">
-        <input type="text" name="project[summary]" value="<%=project.summary%>">
-        <textarea name="project[post]"><%=project.post%></textarea>
-        <button>Update this project!</button>
+        <div>
+            <label>Project Title</label>
+            <input type="text" name="project[title]" value="<%=project.title%>">    
+        </div>
+        <div>
+            <label>Main Image</label>
+            <input type="text" name="project[image]" value="<%=project.image%>">    
+        </div>
+        <div>
+            <label>GitHub Link</label>
+            <input type="text" name="project[github]" value="<%=project.github%>">    
+        </div>
+        <div>
+            <label>Project Summary</label>
+            <input type="text" name="project[summary]" value="<%=project.summary%>">    
+        </div>
+        <div>
+            <label>Post</label>
+            <textarea name="project[post]"><%=project.post%></textarea>    
+        </div>
+        <div>
+            <button>Update this project!</button>    
+        </div>
     </form>
 </section>
 
