@@ -17,12 +17,12 @@
             <input type="text" name="project[github]" value="<%=project.github%>">    
         </div>
         <div>
-            <label>Project Summary</label>
-            <input type="text" name="project[summary]" value="<%=project.summary%>">    
+            <label>Project Summary<span class="charCounter"><span id="charsUsed">0</span>/140</span></label>
+            <textarea id="project-summary" class="textarea-small" name="project[summary]" maxlength="140"><%=project.summary%></textarea>    
         </div>
         <div>
             <label>Post</label>
-            <textarea name="project[post]"><%=project.post%></textarea>    
+            <textarea class="textarea-large" name="project[post]"><%=project.post%></textarea>    
         </div>
         <div>
             <button>Update this project!</button>    
@@ -32,5 +32,5 @@
 
 <a class="link" href="/#portfolio">Go back to Portfolo section</a>
 
-
+<script type="text/javascript" src="/scripts/charCount.js"></script>
 <% include ./partials/footer %>

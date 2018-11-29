@@ -106,9 +106,21 @@ form button {
 
 form textarea {
 	resize: vertical;
-	min-height: 10em;
+	/*min-height: 10em;*/
 	padding: 5px;
 	font-family: inherit;
+}
+
+.textarea-small {
+	min-height: 4.5em;
+}
+
+.textarea-large {
+	min-height: 10em;
+}
+
+label .charCounter {
+	float: right;
 }
 
 /* Header Styles */
