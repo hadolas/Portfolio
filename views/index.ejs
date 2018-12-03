@@ -59,7 +59,9 @@
 
 <section id="portfolio" class="portfolio">
 	<h1 class="title">Portfolio</h1>
-	<a class="link" href="/portfolio/new">Add a project</a>
+	<% if(currentUser){ %>
+		<a class="link" href="/portfolio/new">Add a project</a>
+	<% } %>
 	<div class="projects-container">
 		
 			<% projects.forEach(function(project){ %>

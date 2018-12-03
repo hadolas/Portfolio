@@ -4,7 +4,14 @@
     <p><%=project.summary%></p>
     <p><%=project.post%></p>
     
-    <form action="/portfolio/<%=project._id%>?_method=DELETE" method="POST">
-        <button>Delete Project</button>
-    </form>
+    <% if(currentUser){ %>
+        <div class="editAndDelete">
+            <a id="editButton" class="button" href="/portfolio/<%=project._id%>/edit">Edit</a>
+            <form id="deleteButton" action="/portfolio/<%=project._id%>?_method=DELETE" method="POST">
+                <button>Delete</button>
+            </form>
+        </div>
+    <% } %>
+    
+
 </section>
