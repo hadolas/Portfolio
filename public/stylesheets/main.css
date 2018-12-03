@@ -125,7 +125,7 @@ label .charCounter {
 
 /* Header Styles */
 header {
-	position: absolute;
+	position: fixed;
 	background-color: rgba(0,0,0, 0.9);
 	width: 80%;
 	margin: 20px auto;
