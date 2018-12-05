@@ -3,6 +3,7 @@ var router = express.Router();
 var Project = require("../models/project");
 var User = require("../models/user");
 var passport = require("passport");
+var nodemailer = require("nodemailer");
 
 // INDEX route
 router.get("/", function(req, res){
@@ -59,6 +60,48 @@ router.post("/login", passport.authenticate("local", {
 router.get("/logout", function(req, res){
     req.logout();
     res.redirect("/");
-})
+});
+
+// CONTACT FORM ROUTE
+router.post("/send", function(req, res){
+
+    var output = "<p>You have a new contact request.</p>"+
+        "<h3>Details:</h3>"+
+        "<ul>"+
+            "<li>Name: "+ req.body.email.name +"</li>"+
+            "<li>Email: "+ req.body.email.email +"</li>"+
+        "</ul>"+
+        "<h3>Message: "+ "</h3>" +
+        "<p>"+req.body.email.message + "</p>";
+    
+    var transporter = nodemailer.createTransport({
+        service: "Gmail",
+        auth : {
+            user: process.env.EMAIL,
+            pass: process.env.PASS
+        }
+    });
+    
+    var mailOptions = {
+        to: process.env.EMAIL,
+        from: '"Portfolio Contact" <process.env.EMAIL>',
+        subject: "Contact Request from Portfolio",
+        html: output
+    }
+    
+    transporter.sendMail(mailOptions, function(err){
+        if(err){
+            return console.log("Message NOT sent.")
+        }
+        console.log("Message Sent");
+        Project.find({}, function(err, projects){
+            if(err){
+                console.log(err);
+            } else {
+                res.render("index", {projects:projects});
+            }
+        });
+    });
+});
 
 module.exports = router;
