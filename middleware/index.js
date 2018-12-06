@@ -14,6 +14,7 @@ middlewareObject.checkEmailValidity = function(req, res, next){
     // If the email DOES NOT match the regex, then: 
     if(!match){
         console.log("Message NOT sent due to INVALID EMAIL ADDRESS");
+        req.flash("error", "Message NOT sent due to INVALID EMAIL ADDRESS");
         res.redirect("/#contact");
     } else {
     // If the email DOES match the regex, then: 

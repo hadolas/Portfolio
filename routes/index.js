@@ -89,19 +89,18 @@ router.post("/send", middlewareObject.checkEmailValidity, function(req, res){
         html: output
     }
     
-    Project.find({}, function(err, projects) {
+    transporter.sendMail(mailOptions, function(err){
         if(err){
-            console.log(err);
-        } else {
-            transporter.sendMail(mailOptions, function(err){
-                if(err){
-                    return console.log("Message NOT sent due to ERROR");
-                }
-                console.log("Message Sent");
-            });
+            return console.log("Message NOT sent due to ERROR");
         }
-    res.render("index", {projects:projects});
+        console.log("Message Sent");
     });
+
+    // res.render("index", {projects:projects});
+    // req.flash("success", "Message Sent!");
+    req.flash("success", "Message Sent!");
+    res.redirect("/#contact");
+
 });
 
 module.exports = router;

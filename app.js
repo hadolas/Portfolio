@@ -5,7 +5,8 @@ var express       = require("express"),
     passport      = require("passport"),
     passportLocal = require("passport-local"),
     methodOverride= require("method-override"),
-    User          = require("./models/user");
+    User          = require("./models/user"),
+    flash         = require("connect-flash");
     
     
 var indexRoutes     = require("./routes/index"),
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname+"/public"));
 app.use(methodOverride("_method"));
+app.use(flash());
 
 // PASSPORT CONFIGURATION
 var secret = process.env.SECRET;
@@ -32,9 +34,11 @@ passport.use(new passportLocal(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// currentUser MIDDLEWARE
+// MIDDLEWARE for: currentUser & flash messages
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.error = (req.flash("error"));
+    res.locals.success = (req.flash("success"));
     next();
 });
 

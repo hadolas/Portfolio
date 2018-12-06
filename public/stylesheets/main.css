@@ -360,3 +360,21 @@ aside li {
 	line-height: 25px;
 	width: 70%;
 }
+
+/*Flash Messages*/
+.flash {
+	width: 60%;
+	background-color: rgba(0,0,0,0.1);
+	padding: 10px 20px;
+	margin: 5px 0;
+}
+
+.flash-error {
+	color: red;
+	background-color: rgba(255,0,0, 0.1);
+}
+
+.flash-success{
+	color: green;
+	background-color: rgba(0,255,0, 0.1);
+}
