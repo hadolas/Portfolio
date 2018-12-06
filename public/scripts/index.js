@@ -1,3 +1,4 @@
+// SMOOTH SCROLL
 function smoothScroll(target, duration){
     var target = document.querySelector(target);
     // console.log("Target is: "+target);
@@ -32,7 +33,6 @@ function smoothScroll(target, duration){
 }
 
 
-
 var home = document.querySelector("#home-link");
 home.addEventListener("click", function(){
     smoothScroll("#home", 1500);
@@ -56,4 +56,19 @@ contact.addEventListener("click", function(){
 var portfolio2 = document.querySelector("#portfolio-link2");
 portfolio2.addEventListener("click", function(){
     smoothScroll("#portfolio", 1500);
+});
+
+
+// FRONT-END EMAIL VALIDATION
+var email =document.getElementById("email");
+var submit =document.getElementById("submit");
+
+submit.addEventListener("click", function(){
+    var regex = /.+@.+/;
+    var match = regex.exec(email.value);
+    if(match){
+        console.log("VALID: " +email.value + " (front-end");    
+    } else {
+        console.log("INVALID EMAIL (front-end");
+    }
 });

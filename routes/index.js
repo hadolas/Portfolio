@@ -89,18 +89,28 @@ router.post("/send", function(req, res){
         html: output
     }
     
-    transporter.sendMail(mailOptions, function(err){
+    // BACK-END EMAIL VALIDATION
+    var regex= /.+@.+/;
+    var match = regex.exec(req.body.email.email);
+    
+    Project.find({}, function(err, projects) {
         if(err){
-            return console.log("Message NOT sent.")
-        }
-        console.log("Message Sent");
-        Project.find({}, function(err, projects){
-            if(err){
-                console.log(err);
+            console.log(err);
+        } else {
+            // If the email DOESN'T match the regex then:
+            if(!match){
+                console.log("Message NOT sent due to INVALID EMAIL ADDRESS");
             } else {
-                res.render("index", {projects:projects});
+            // If the email DOES match the regex then: 
+                transporter.sendMail(mailOptions, function(err){
+                    if(err){
+                        return console.log("Message NOT sent due to ERROR");
+                    }
+                    console.log("Message Sent");
+                });
             }
-        });
+        }
+        res.render("index", {projects:projects});
     });
 });
 
