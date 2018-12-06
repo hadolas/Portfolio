@@ -8,5 +8,17 @@ middlewareObject.isLoggedIn = function(req, res, next){
     res.redirect("/login");
 }
 
+middlewareObject.checkEmailValidity = function(req, res, next){
+    var regex= /.+@.+/;
+    var match = regex.exec(req.body.email.email);
+    // If the email DOES NOT match the regex, then: 
+    if(!match){
+        console.log("Message NOT sent due to INVALID EMAIL ADDRESS");
+        res.redirect("/#contact");
+    } else {
+    // If the email DOES match the regex, then: 
+        return next();
+    }
+}
 
 module.exports = middlewareObject;

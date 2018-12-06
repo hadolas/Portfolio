@@ -4,6 +4,7 @@ var Project = require("../models/project");
 var User = require("../models/user");
 var passport = require("passport");
 var nodemailer = require("nodemailer");
+var middlewareObject = require("../middleware");
 
 // INDEX route
 router.get("/", function(req, res){
@@ -63,8 +64,7 @@ router.get("/logout", function(req, res){
 });
 
 // CONTACT FORM ROUTE
-router.post("/send", function(req, res){
-
+router.post("/send", middlewareObject.checkEmailValidity, function(req, res){
     var output = "<p>You have a new contact request.</p>"+
         "<h3>Details:</h3>"+
         "<ul>"+
@@ -89,28 +89,18 @@ router.post("/send", function(req, res){
         html: output
     }
     
-    // BACK-END EMAIL VALIDATION
-    var regex= /.+@.+/;
-    var match = regex.exec(req.body.email.email);
-    
     Project.find({}, function(err, projects) {
         if(err){
             console.log(err);
         } else {
-            // If the email DOESN'T match the regex then:
-            if(!match){
-                console.log("Message NOT sent due to INVALID EMAIL ADDRESS");
-            } else {
-            // If the email DOES match the regex then: 
-                transporter.sendMail(mailOptions, function(err){
-                    if(err){
-                        return console.log("Message NOT sent due to ERROR");
-                    }
-                    console.log("Message Sent");
-                });
-            }
+            transporter.sendMail(mailOptions, function(err){
+                if(err){
+                    return console.log("Message NOT sent due to ERROR");
+                }
+                console.log("Message Sent");
+            });
         }
-        res.render("index", {projects:projects});
+    res.render("index", {projects:projects});
     });
 });
 
