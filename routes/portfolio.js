@@ -14,11 +14,14 @@ router.post("/portfolio", middlewareObject.isLoggedIn, function(req, res){
     // create and save newly created project to DB
     Project.create(req.body.project, function(err, project){
         if(err){
+            req.flash("project_error", "Something went wrong. Project could not be added to portfolio.")
             console.log(err);
         } else {
             console.log(project);
-            res.redirect("/#portfolio");     
+            req.flash("project_success", "Successfully added project to portfolio!!");
+            // res.redirect("/#portfolio");     
         }
+        res.redirect("/#portfolio");
     });
 });
 
@@ -52,10 +55,13 @@ router.put("/portfolio/:id", middlewareObject.isLoggedIn, function(req, res){
     Project.findByIdAndUpdate(req.params.id, req.body.project, function(err, result){
         if(err){
             console.log(err);
-            res.redirect("/");
+            req.flash("project_update_error", "Something went wrong. Could not update project.")
         } else {
-            res.redirect("/portfolio/"+req.params.id);
+            console.log("updated");
+            req.flash("project_update_success", "Project updated!");
+            // res.redirect("/portfolio/"+req.params.id);
         }
+        res.redirect("/portfolio/"+req.params.id);
     });
 });
 
@@ -65,9 +71,11 @@ router.delete("/portfolio/:id", middlewareObject.isLoggedIn, function(req, res){
    Project.findByIdAndRemove(req.params.id, function(err){
        if(err){
            console.log(err);
+           req.flash("project_error", "Something went wrong. Project not deleted.");
        } else {
-           res.redirect("/#portfolio");
+           req.flash("project_success", "Project deleted.");
        }
+       res.redirect("/#portfolio");
    }); 
 });
 

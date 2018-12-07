@@ -59,6 +59,16 @@
 
 <section id="portfolio" class="portfolio">
 	<h1 class="title">Portfolio</h1>
+	<% if(project_error && project_error.length>0){ %>
+		<div class="flash flash-error">
+			<%= project_error %>
+		</div>
+	<% } %>
+	<% if(project_success && project_success.length>0){ %>
+		<div class="flash flash-success">
+			<%= project_success %>
+		</div>
+	<% } %>
 	<% if(currentUser){ %>
 		<a class="link" href="/portfolio/new">Add a project</a>
 	<% } %>
@@ -82,15 +92,15 @@
 	<h1 class="title">Get In Touch</h1>
 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	
-	<% if(error && error.length>0){ %>
+	<% if(email_error && email_error.length>0){ %>
 		<div class="flash flash-error">
-		    <%= error %>
+		    <%= email_error %>
 		</div>
 	<% } %>
 	
-	<% if(success && success.length>0){ %>
+	<% if(email_success && email_success.length>0){ %>
 		<div class="flash flash-success">
-			<%= success %>
+			<%= email_success %>
 		</div>
 	<% } %>
 	

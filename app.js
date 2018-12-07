@@ -37,8 +37,12 @@ passport.deserializeUser(User.deserializeUser());
 // MIDDLEWARE for: currentUser & flash messages
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
-    res.locals.error = (req.flash("error"));
-    res.locals.success = (req.flash("success"));
+    res.locals.email_error = (req.flash("email_error"));
+    res.locals.email_success = (req.flash("email_success"));
+    res.locals.project_error = (req.flash("project_error"));
+    res.locals.project_success = (req.flash("project_success"));
+    res.locals.project_update_error = (req.flash("project_update_error"));
+    res.locals.project_update_success = (req.flash("project_update_success"));
     next();
 });
 

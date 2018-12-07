@@ -91,16 +91,14 @@ router.post("/send", middlewareObject.checkEmailValidity, function(req, res){
     
     transporter.sendMail(mailOptions, function(err){
         if(err){
-            return console.log("Message NOT sent due to ERROR");
+            console.log("Message NOT sent due to ERROR");
+            req.flash("email_error", "Message not sent due to error.");
+        } else {
+            console.log("Message sent"); 
+            req.flash("email_success", "Message sent!");
         }
-        console.log("Message Sent");
+        res.redirect("/#contact");
     });
-
-    // res.render("index", {projects:projects});
-    // req.flash("success", "Message Sent!");
-    req.flash("success", "Message Sent!");
-    res.redirect("/#contact");
-
 });
 
 module.exports = router;
