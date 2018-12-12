@@ -72,3 +72,37 @@ submit.addEventListener("click", function(){
         console.log("INVALID EMAIL (front-end");
     }
 });
+
+
+// HAMBURGER MENU
+function open_close_Nav(){
+  if(document.querySelector("nav").style.display === "none"){
+    document.querySelector("nav").style.display = "flex";
+  } else {
+    document.querySelector("nav").style.display = "none";
+  }
+ }
+
+document.querySelector(".hamburger-container").style.display = "none";
+
+function checkScrollY(){
+  var scrollY = window.scrollY;
+  document.addEventListener("scroll", function(){
+    scrollY=window.scrollY;
+    console.log(scrollY);
+    if(scrollY>250){
+      document.querySelector("nav").style.display = "none";
+      document.querySelector(".hamburger-container").style.display = "block";
+      console.log("scroll is greater than 250!");
+    } else {
+      document.querySelector("nav").style.display = "flex";
+      document.querySelector(".hamburger-container").style.display = "none";
+    }
+  });
+}
+
+checkScrollY();
+
+console.log("test1");
+console.log("test2");
+console.log("test3");

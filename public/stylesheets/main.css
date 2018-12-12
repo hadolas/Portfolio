@@ -129,7 +129,7 @@ header {
 	background-color: rgba(0,0,0, 0.9);
 	width: 80%;
 	margin: 20px auto;
-	padding: 15px 20px;
+	/*padding: 15px 20px;*/
 	z-index: 1;
 	opacity: 0.8;
 }
@@ -147,11 +147,27 @@ header nav li {
 	text-align: center;
 	text-transform: capitalize;
 	font-variant: small-caps;
+	padding: 15px 20px;
 }
 
 header nav li:before {
 	content: ">> ";
 	color: #008000;
+}
+
+/* Hamburger Styles */
+.hamburger-container {
+  position: absolute;
+  left: -60px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 35px;
+  height: 5px;
+  margin-bottom: 5px;
+  background-color: black;
 }
 
 /* Aside Styles */
