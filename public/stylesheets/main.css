@@ -126,7 +126,7 @@ label .charCounter {
 /* Header Styles */
 header {
 	position: fixed;
-	background-color: rgba(0,0,0, 0.9);
+	/*background-color: rgba(0,0,0, 0.9);*/
 	width: 80%;
 	margin: 20px auto;
 	/*padding: 15px 20px;*/
@@ -138,6 +138,26 @@ header nav {
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
+	background-color: rgba(0,0,0, 0.9);
+	animation: slideIn 1s forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-80px);
+  }
+  100% {
+    transform: translateY(1px);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateY(1px);
+  }
+  100% {
+    transform: translateY(-80px);
+  }
 }
 
 header nav li {
