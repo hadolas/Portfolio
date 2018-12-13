@@ -1,16 +1,16 @@
 <% include ./partials/header %>
-<section class="section-margin">
-    <% if(project_update_error && project_update_error.length>0){ %>
-		<div class="flash flash-error">
-			<%= project_update_error %>
-		</div>
-	<% } %>
-	<% if(project_update_success && project_update_success.length>0){ %>
-		<div class="flash flash-success">
-			<%= project_update_success %>
-		</div>
-	<% } %>
-    <h1><%=project.title%></h1>
+<section class="show-page">
+        <% if(project_update_error && project_update_error.length>0){ %>
+    		<div class="margin-space-top flash flash-error">
+    			<%= project_update_error %>
+    		</div>
+    	<% } %>
+    	<% if(project_update_success && project_update_success.length>0){ %>
+    		<div class="margin-space-top flash flash-success">
+    			<%= project_update_success %>
+    		</div>
+    	<% } %>
+    <h1 class="margin-space-top"><%=project.title%></h1>
     <p><%=project.summary%></p>
     <p><%=project.post%></p>
     

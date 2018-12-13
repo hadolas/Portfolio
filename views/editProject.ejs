@@ -1,8 +1,8 @@
 <% include ./partials/header %>
 
 
-<section class="section-margin project-form-section">
-    <h1>Edit <%= project.title %></h1>
+<section class="edit-page project-form-section">
+    <h1 class="margin-space-top">Edit <%= project.title %></h1>
     <form action="/portfolio/<%=project._id%>?_method=PUT" method="POST">
         <div>
             <label>Project Title</label>
@@ -28,9 +28,10 @@
             <button>Update this project!</button>    
         </div>
     </form>
+    
+    <a class="link" href="/#portfolio">Go back to Portfolo section</a>
 </section>
 
-<a class="link" href="/#portfolio">Go back to Portfolo section</a>
 
 <script type="text/javascript" src="/scripts/charCount.js"></script>
 <% include ./partials/footer %>

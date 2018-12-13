@@ -61,16 +61,16 @@ section {
 	width: 100%;
 }
 
-.section-margin {
-	margin-top: 70px;
+.margin-space-top {
+	margin-top: 80px;
 }
 
-/*section:not(.home):not(.project-form-section):nth-child(even){*/
-/*	background-color: #f7f7f4;*/
-/*}*/
-
-section:not(.home):nth-child(odd){
+section:not(.home):nth-child(even){
 	background-color: #f7f7f4;
+}
+
+.login-page, .show-page, edit-page {
+	min-height: 100vh;
 }
 
 /* Form Styles */
@@ -126,10 +126,8 @@ label .charCounter {
 /* Header Styles */
 header {
 	position: fixed;
-	/*background-color: rgba(0,0,0, 0.9);*/
 	width: 80%;
 	margin: 20px auto;
-	/*padding: 15px 20px;*/
 	z-index: 1;
 	opacity: 0.8;
 }
@@ -167,7 +165,7 @@ header nav li {
 	text-align: center;
 	text-transform: capitalize;
 	font-variant: small-caps;
-	padding: 15px 20px;
+	padding: 10px 20px;
 }
 
 header nav li:before {
@@ -195,8 +193,9 @@ aside {
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 0.7em;
-	right: 5px;
+	right: 0;
 	position: absolute;
+	top:-18px;
 }
 
 aside li {
@@ -372,13 +371,6 @@ aside li {
 }
 
 /*Portfolio: Project Form Styles*/
-.project-form-section h1 {
-	width: 100%;
-	margin: 0;
-	padding:20px 0;
-	text-align: center;
-}
-
 .editAndDelete {
 	display: flex;
 	width: 40%;
@@ -402,6 +394,9 @@ aside li {
 	width: 60%;
 	background-color: rgba(0,0,0,0.1);
 	padding: 10px 20px;
+}
+
+.flash-margin {
 	margin: 5px 0;
 }
 
@@ -414,3 +409,5 @@ aside li {
 	color: green;
 	background-color: rgba(0,255,0, 0.1);
 }
+
+

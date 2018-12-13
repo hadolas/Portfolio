@@ -60,12 +60,12 @@
 <section id="portfolio" class="portfolio">
 	<h1 class="title">Portfolio</h1>
 	<% if(project_error && project_error.length>0){ %>
-		<div class="flash flash-error">
+		<div class="flash flash-error flash-margin">
 			<%= project_error %>
 		</div>
 	<% } %>
 	<% if(project_success && project_success.length>0){ %>
-		<div class="flash flash-success">
+		<div class="flash flash-success flash-margin">
 			<%= project_success %>
 		</div>
 	<% } %>
@@ -93,13 +93,13 @@
 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	
 	<% if(email_error && email_error.length>0){ %>
-		<div class="flash flash-error">
+		<div class="flash flash-error flash-margin">
 		    <%= email_error %>
 		</div>
 	<% } %>
 	
 	<% if(email_success && email_success.length>0){ %>
-		<div class="flash flash-success">
+		<div class="flash flash-success flash-margin">
 			<%= email_success %>
 		</div>
 	<% } %>
