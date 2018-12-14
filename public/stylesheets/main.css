@@ -18,6 +18,12 @@ a {
 	text-decoration: none;
 }
 
+p {
+	line-height: 25px;
+	width: 100%;
+}
+
+
 /* .link are 'a tags' which DON'T take the shape of a button */
 .link {
     color: #62b24e;
@@ -31,6 +37,7 @@ a {
 
 .title {
 	margin: 30px 0;
+	text-align: center;
 }
 
 
@@ -75,7 +82,7 @@ section:not(.home):nth-child(even){
 
 /* Form Styles */
 form:not(#deleteButton) {
-	min-width: 60%;
+	/*min-width: 70%;*/
 	padding: 20px;
 	background-color: #f7f7f4
 }
@@ -106,7 +113,6 @@ form button {
 
 form textarea {
 	resize: vertical;
-	/*min-height: 10em;*/
 	padding: 5px;
 	font-family: inherit;
 }
@@ -239,16 +245,15 @@ aside li {
 /* About Styles */
 .about p {
 	text-align: center;
-	line-height: 25px;
-	width: 70%;
 }
 
 .about .profile-pic{
 	width:150px;
 	height:150px;
+	margin: 0 auto;
 	background-color: forestgreen;
 	border-radius: 50%;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 
 .about p br {
@@ -293,7 +298,7 @@ aside li {
 .portfolio .projects-container {
 	display: flex;
 	flex-wrap: wrap;
-	width: 80%;
+	/*width: 80%;*/
 }
 
 .portfolio .indv-project-container {
@@ -322,6 +327,9 @@ aside li {
 
 .portfolio .indv-project-container .project-info p {
 	margin: 0 0 10px 0;
+	width: 100%;
+	text-align: left;
+	line-height: 1.2em;
 }
 
 .portfolio .indv-project-container:hover .project-info {
@@ -385,13 +393,11 @@ aside li {
 /* Contact Styles */
 .contact p {
 	text-align: center;
-	line-height: 25px;
-	width: 70%;
 }
 
 /*Flash Messages*/
 .flash {
-	width: 60%;
+	/*width: 70%;*/
 	background-color: rgba(0,0,0,0.1);
 	padding: 10px 20px;
 }
@@ -410,4 +416,6 @@ aside li {
 	background-color: rgba(0,255,0, 0.1);
 }
 
-
+.section-container {
+	width: 80%;
+}

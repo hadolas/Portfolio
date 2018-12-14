@@ -1,35 +1,38 @@
 <% include ./partials/header %>
 
 
-<section class="edit-page project-form-section">
-    <h1 class="margin-space-top">Edit <%= project.title %></h1>
-    <form action="/portfolio/<%=project._id%>?_method=PUT" method="POST">
-        <div>
-            <label>Project Title</label>
-            <input type="text" name="project[title]" value="<%=project.title%>">    
-        </div>
-        <div>
-            <label>Main Image</label>
-            <input type="text" name="project[image]" value="<%=project.image%>">    
-        </div>
-        <div>
-            <label>GitHub Link</label>
-            <input type="text" name="project[github]" value="<%=project.github%>">    
-        </div>
-        <div>
-            <label>Project Summary<span class="charCounter"><span id="charsUsed">0</span>/140</span></label>
-            <textarea id="project-summary" class="textarea-small" name="project[summary]" maxlength="140"><%=project.summary%></textarea>    
-        </div>
-        <div>
-            <label>Post</label>
-            <textarea class="textarea-large" name="project[post]"><%=project.post%></textarea>    
-        </div>
-        <div>
-            <button>Update this project!</button>    
-        </div>
-    </form>
+<section class="edit-page">
+    <div class="section-container">
+        <h1 class=" title margin-space-top">Edit <%= project.title %></h1>
+        <form action="/portfolio/<%=project._id%>?_method=PUT" method="POST">
+            <div>
+                <label>Project Title</label>
+                <input type="text" name="project[title]" value="<%=project.title%>">    
+            </div>
+            <div>
+                <label>Main Image</label>
+                <input type="text" name="project[image]" value="<%=project.image%>">    
+            </div>
+            <div>
+                <label>GitHub Link</label>
+                <input type="text" name="project[github]" value="<%=project.github%>">    
+            </div>
+            <div>
+                <label>Project Summary<span class="charCounter"><span id="charsUsed">0</span>/140</span></label>
+                <textarea id="project-summary" class="textarea-small" name="project[summary]" maxlength="140"><%=project.summary%></textarea>    
+            </div>
+            <div>
+                <label>Post</label>
+                <textarea class="textarea-large" name="project[post]"><%=project.post%></textarea>    
+            </div>
+            <div>
+                <button>Update this project!</button>    
+            </div>
+        </form>
+        
+        <a class="link" href="/#portfolio">Go back to Portfolo section</a>    
+    </div>
     
-    <a class="link" href="/#portfolio">Go back to Portfolo section</a>
 </section>
 
 
