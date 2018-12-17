@@ -32,6 +32,7 @@
 					<li>Lorem ipsum</li>
 					<li>Lorem ipsum</li>
 					<li>Lorem ipsum</li>
+					<li>Lorem ipsum</li>
 				</ul>
 			</div>
 			
@@ -81,7 +82,8 @@
 							<p><%= project.title %></p>
 							<p><%= project.summary %></p>
 						</div>
-						<img src="<%= project.image %>">
+						<!--<img src="<%= project.image %>">-->
+						<img class="img" style="background-image:url(<%=project.image%>)">
 						<a class="button left-button" href="<%=project.github%>"><i class="fab fa-github"></i><span>     View Code</span></a>
 						<a class="button right-button" href="/portfolio/<%=project._id%>"><span>More Info     </span><i class="fas fa-chevron-circle-right"></i></a>
 					</div>
@@ -118,7 +120,7 @@
 			</div>
 			<div>
 				<label>Message</label>
-				<textarea name="email[message]" required></textarea>
+				<textarea class="textarea-large" name="email[message]" required></textarea>
 			</div>
 			<div>
 				<button id="submit">Send Your Message</button>
