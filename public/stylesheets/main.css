@@ -86,7 +86,6 @@ section:not(.home):nth-child(even){
 
 /* Form Styles */
 form:not(#deleteButton) {
-	/*min-width: 70%;*/
 	padding: 20px;
 	background-color: #f7f7f4
 }
@@ -152,7 +151,7 @@ header nav {
 
 @keyframes slideIn {
   0% {
-    transform: translateY(-80px);
+    transform: translateY(-180px);
   }
   100% {
     transform: translateY(1px);
@@ -164,7 +163,7 @@ header nav {
     transform: translateY(1px);
   }
   100% {
-    transform: translateY(-80px);
+    transform: translateY(-180px);
   }
 }
 
