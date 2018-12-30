@@ -3,14 +3,14 @@
 <section>
     <div class="section-container">
         <h1 class="title margin-space-top">Add a Project</h1>
-        <form action="/portfolio" method="POST">
+        <form action="/portfolio" method="POST" enctype="multipart/form-data">
             <div>
                 <label>Project Title</label>
                 <input type="text" name="project[title]" placeholder="Title">    
             </div>
             <div>
-                <label>Main Image</label>
-                <input type="text" name="project[image]" placeholder="Image URL">    
+                <label for="image">Main Image</label>
+                <input type="file" id="image" name="image" accept="image/*">    
             </div>
             <div>
                 <label>GitHub Link</label>

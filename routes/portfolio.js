@@ -1,8 +1,31 @@
-var express = require("express");
-var router = express.Router();
-var Project = require("../models/project");
-var middlewareObject = require("../middleware")
+var express = require("express"),
+    router = express.Router(),
+    Project = require("../models/project"),
+    middlewareObject = require("../middleware"),
+    multer = require("multer"),
+    cloudinary = require("cloudinary");
 
+var storage = multer.diskStorage({
+   filename: function(req, file, callback){
+       console.log(file);
+       callback(null, Date.now() + file.originalname);
+   }
+});
+
+var checkUploadIsImage = function(req, file, callback){
+    if(!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)){
+        return callback(new Error("Only image files can be uploaded."), false);
+    }
+    callback(null, true);
+};
+
+var upload = multer({storage:storage, fileFilter:checkUploadIsImage});
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 // NEW route
 router.get("/portfolio/new", middlewareObject.isLoggedIn, function(req, res){
@@ -10,18 +33,25 @@ router.get("/portfolio/new", middlewareObject.isLoggedIn, function(req, res){
 });
 
 // CREATE route
-router.post("/portfolio", middlewareObject.isLoggedIn, function(req, res){
-    // create and save newly created project to DB
-    Project.create(req.body.project, function(err, project){
+router.post("/portfolio", middlewareObject.isLoggedIn, upload.single("image"), function(req, res){
+    cloudinary.v2.uploader.upload(req.file.path, function(err, result){
         if(err){
-            req.flash("project_error", "Something went wrong. Project could not be added to portfolio.")
-            console.log(err);
-        } else {
-            console.log(project);
-            req.flash("project_success", "Successfully added project to portfolio!!");
-            // res.redirect("/#portfolio");     
+            console.log(err)
+            return res.redirect("back");
         }
-        res.redirect("/#portfolio");
+        console.log(result);
+        req.body.project.image = result.secure_url;
+        // create and save newly created project to DB
+        Project.create(req.body.project, function(err, project){
+            if(err){
+                req.flash("project_error", "Something went wrong. Project could not be added to portfolio.")
+                console.log(err);
+            } else {
+                console.log(project);
+                req.flash("project_success", "Successfully added project to portfolio!!");
+            }
+            res.redirect("/#portfolio");
+        }); 
     });
 });
 
