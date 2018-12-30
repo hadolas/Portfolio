@@ -9,7 +9,7 @@ var middlewareObject = require("../middleware");
 // INDEX route
 router.get("/", function(req, res){
     // get all projects from DB
-    Project.find({}, function(err, projects){
+    Project.find({}).sort({"_id":-1}).exec(function(err, projects){
        if(err){
            console.log(err);
        } else {
