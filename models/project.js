@@ -4,6 +4,7 @@ var mongoose = require("mongoose");
 var projectSchema = new mongoose.Schema({
     title: String,
     image: String,
+    imageId: String,
     github: String,
     summary: String,
     post: String

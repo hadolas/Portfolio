@@ -36,18 +36,15 @@ router.get("/portfolio/new", middlewareObject.isLoggedIn, function(req, res){
 router.post("/portfolio", middlewareObject.isLoggedIn, upload.single("image"), function(req, res){
     cloudinary.v2.uploader.upload(req.file.path, function(err, result){
         if(err){
-            console.log(err)
             return res.redirect("back");
         }
-        console.log(result);
         req.body.project.image = result.secure_url;
+        req.body.project.imageId = result.public_id;
         // create and save newly created project to DB
         Project.create(req.body.project, function(err, project){
             if(err){
-                req.flash("project_error", "Something went wrong. Project could not be added to portfolio.")
-                console.log(err);
+                req.flash("project_error", "Something went wrong. Project could not be added to portfolio.");
             } else {
-                console.log(project);
                 req.flash("project_success", "Successfully added project to portfolio!!");
             }
             res.redirect("/#portfolio");
@@ -81,15 +78,28 @@ router.get("/portfolio/:id/edit", middlewareObject.isLoggedIn, function(req, res
 
 
 // UPDATE ROUTE
-router.put("/portfolio/:id", middlewareObject.isLoggedIn, function(req, res){
-    Project.findByIdAndUpdate(req.params.id, req.body.project, function(err, result){
+router.put("/portfolio/:id", middlewareObject.isLoggedIn, upload.single('image'), function(req, res){
+    Project.findById(req.params.id, async function(err, project){
         if(err){
-            console.log(err);
             req.flash("project_update_error", "Something went wrong. Could not update project.")
         } else {
-            console.log("updated");
+            if(req.file){
+                try {
+                    await cloudinary.v2.uploader.destroy(project.imageId)
+                    var result = await cloudinary.v2.uploader.upload(req.file.path)
+                    project.imageId = result.public_id;
+                    project.image = result.secure_url;
+                } catch(err) {
+                    req.flash("project_update_error", "Something went wrong. Could not update project.")
+                    return res.redirect("/portfolio/"+req.params.id);
+                }
+            }
+            project.title = req.body.project.title;
+            project.github = req.body.project.github;
+            project.summary = req.body.project.summary;
+            project.post = req.body.project.post;
+            project.save();
             req.flash("project_update_success", "Project updated!");
-            // res.redirect("/portfolio/"+req.params.id);
         }
         res.redirect("/portfolio/"+req.params.id);
     });
@@ -98,14 +108,20 @@ router.put("/portfolio/:id", middlewareObject.isLoggedIn, function(req, res){
 
 // DESTROY ROUTE
 router.delete("/portfolio/:id", middlewareObject.isLoggedIn, function(req, res){
-   Project.findByIdAndRemove(req.params.id, function(err){
-       if(err){
-           console.log(err);
-           req.flash("project_error", "Something went wrong. Project not deleted.");
-       } else {
-           req.flash("project_success", "Project deleted.");
-       }
-       res.redirect("/#portfolio");
+    Project.findById(req.params.id, async function(err, project){
+        if(err){
+            req.flash("project_error", "Something went wrong. Project not deleted.");
+            return res.redirect("/#portfolio");
+        } 
+        try {
+            await cloudinary.v2.uploader.destroy(project.imageId);
+            project.remove();
+            req.flash("project_success", "Project deleted.");
+            res.redirect("/#portfolio");
+        } catch(err) {
+            req.flash("project_error", "Something went wrong. Project not deleted.")
+            return res.redirect("/#portfolio");
+        }
    }); 
 });
 
