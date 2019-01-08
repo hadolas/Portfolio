@@ -3,7 +3,8 @@ var express = require("express"),
     Project = require("../models/project"),
     middlewareObject = require("../middleware"),
     multer = require("multer"),
-    cloudinary = require("cloudinary");
+    cloudinary = require("cloudinary"),
+    sanitizeHtml = require("sanitize-html");
 
 var storage = multer.diskStorage({
    filename: function(req, file, callback){
@@ -41,6 +42,21 @@ router.post("/portfolio", middlewareObject.isLoggedIn, upload.single("image"), f
         req.body.project.image = result.secure_url;
         req.body.project.imageId = result.public_id;
         // create and save newly created project to DB
+        // req.body.project.post = sanitizeHtml(req.body.project.post);
+        
+        // req.body.project.post = sanitizeHtml(req.body.project.post, {
+        //     allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])
+        // });        
+        req.body.project.post = sanitizeHtml(req.body.project.post, {
+            allowedTags: ['strong', 'em', 'img', 'p', 'a', 'div'],
+            allowedAttributes: {
+                'a':['href'],
+                'img': ['src']
+            },
+            allowedClasses:{
+                'p': ['caption']
+            }
+        });
         Project.create(req.body.project, function(err, project){
             if(err){
                 req.flash("project_error", "Something went wrong. Project could not be added to portfolio.");
@@ -79,6 +95,17 @@ router.get("/portfolio/:id/edit", middlewareObject.isLoggedIn, function(req, res
 
 // UPDATE ROUTE
 router.put("/portfolio/:id", middlewareObject.isLoggedIn, upload.single('image'), function(req, res){
+    req.body.project.post = sanitizeHtml(req.body.project.post, {
+        allowedTags: ['strong', 'em', 'img', 'p', 'a', 'div', 'h2', 'h3', 'h4', 'br', 'ul', 'li'],
+        allowedAttributes: {
+            'a':['href'],
+            'img': ['src']
+        },
+        allowedClasses:{
+            'p': ['caption'],
+            'div': ['width50']
+        }
+    });
     Project.findById(req.params.id, async function(err, project){
         if(err){
             req.flash("project_update_error", "Something went wrong. Could not update project.")

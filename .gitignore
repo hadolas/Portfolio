@@ -1,4 +1,5 @@
 test_data.txt
 node_modules
+package-lock.json
 ; routes/index.js
 ; views/register.ejs
