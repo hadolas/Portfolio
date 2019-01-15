@@ -47,7 +47,8 @@ p {
 }
 
 .title {
-	margin: 30px 0;
+	/*margin: 30px 0;*/
+	margin: 50px 0 30px 0;
 	text-align: center;
 }
 
@@ -79,12 +80,16 @@ section {
 	width: 100%;
 }
 
+section:not(.home) {
+	padding-bottom: 40px;
+}
+
 .section-container {
 	width: 70%;
 }
 
 .margin-space-top {
-	margin-top: 80px;
+	margin-top: 40px;
 }
 
 section:not(.home):nth-child(even){
@@ -151,9 +156,9 @@ label .charCounter {
 header {
 	position: fixed;
 	width: 80%;
-	margin: 20px auto;
+	/*margin: 20px auto;*/
 	z-index: 1;
-	opacity: 0.8;
+	opacity: 0.9;
 }
 
 header nav {
@@ -218,8 +223,10 @@ aside {
 	flex-wrap: wrap;
 	font-size: 0.7em;
 	right: 0;
-	position: absolute;
-	top:-18px;
+	position: relative;
+	float: right;
+	bottom: 40px;
+	background-color: #aed581;
 }
 
 aside li {
@@ -227,6 +234,10 @@ aside li {
 	text-transform: capitalize;
 	font-variant: small-caps;
 	
+}
+
+aside .link {
+	color: red;
 }
 
 /* Home Styles */
@@ -261,7 +272,8 @@ aside li {
 }
 
 /* About Styles */
-.about p {
+.about p, .contact p {
+	margin-bottom: 40px;
 	text-align: center;
 }
 
@@ -283,7 +295,6 @@ aside li {
 	justify-content: center;
 	background-color: #f7f7f4;
 	margin: 0 auto;
-	margin-bottom: 50px;
 	max-width: 680px;
 }
 
@@ -440,7 +451,7 @@ aside li {
 /*Portfolio: Project Form Styles*/
 .editAndDelete {
 	display: flex;
-	width: 40%;
+	margin-bottom: 20px;
 }
 
 #deleteButton, #editButton {
@@ -450,13 +461,9 @@ aside li {
 }
 
 /* Contact Styles */
-.contact p {
-	text-align: center;
-}
 
 /*Flash Messages*/
 .flash {
-	/*width: 70%;*/
 	background-color: rgba(0,0,0,0.1);
 	padding: 10px 20px;
 }
@@ -485,7 +492,7 @@ aside li {
 }
 
 .show-page .section-container div:not(.flash) {
-	padding: 30px 0;
+	padding-top: 20px;
 	line-height: 22px;
 }
 
@@ -504,5 +511,27 @@ aside li {
 h4 {
 	color: #008000;
 	margin-bottom: 7px;
-	margin-top: 25px;
+	margin-top: 22px;
+}
+
+/*Footer Styles*/
+footer {
+	background-color:rgba(0,0,0, 0.9);
+	color: white;
+	text-align: center;
+	width: 100%;
+	padding: 5px 0;
+}
+
+footer div i {
+	font-size: 35px;
+	padding: 10px;
+}
+
+footer a {
+	color: white;
+}
+
+footer a:hover {
+	opacity: 0.3;
 }

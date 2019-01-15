@@ -23,16 +23,9 @@
         </div>
         <aside>
             <% if(currentUser){  %>
-        	    <li><a class="link" style="color:red;" href="#">Signed in as: <%=currentUser.username%></a></li>
-        	    <li><a class="link" style="color:red;" href="/logout">Logout</a></li>
+        	    <li><a class="link" href="#">Signed in as: <%=currentUser.username%></a></li>
+        	    <li><a class="link" href="/logout">Logout</a></li>
         	<% } %>
     	</aside>
     </header>
-
- <!--   <aside>-->
- <!--       <% if(currentUser){  %>-->
- <!--   	    <li><a class="link" style="color:red;" href="#">Signed in as: <%=currentUser.username%></a></li>-->
- <!--   	    <li><a class="link" style="color:red;" href="/logout">Logout</a></li>-->
- <!--   	<% } %>-->
-	<!--</aside>-->
 	

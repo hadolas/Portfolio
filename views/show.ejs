@@ -12,12 +12,6 @@
     		</div>
     	<% } %>
     <h1 class="title"><%=project.title%></h1>
-        <img src="<%=project.image%>">
-        <!--<p><%=project.summary%></p>-->
-        <div><p><%-project.post%></p></div>
-    </div>
-
-    
     <% if(currentUser){ %>
         <div class="editAndDelete">
             <a id="editButton" class="button" href="/portfolio/<%=project._id%>/edit">Edit</a>
@@ -26,8 +20,11 @@
             </form>
         </div>
     <% } %>
-    
+        <img src="<%=project.image%>">
 
+        <div><p><%-project.post%></p></div>
+    </div>
+    
 </section>
 
 <% include ./partials/footer %>

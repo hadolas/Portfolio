@@ -2,8 +2,8 @@
 
 
 <section class="edit-page">
-    <div class="section-container">
-        <h1 class=" title margin-space-top">Edit <%= project.title %></h1>
+    <div class="section-container margin-space-top">
+        <h1 class="title">Edit <%= project.title %></h1>
         <form action="/portfolio/<%=project._id%>?_method=PUT" method="POST" enctype="multipart/form-data">
             <div>
                 <label>Project Title</label>
