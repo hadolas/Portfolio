@@ -41,12 +41,7 @@ router.post("/portfolio", middlewareObject.isLoggedIn, upload.single("image"), f
         }
         req.body.project.image = result.secure_url;
         req.body.project.imageId = result.public_id;
-        // create and save newly created project to DB
-        // req.body.project.post = sanitizeHtml(req.body.project.post);
-        
-        // req.body.project.post = sanitizeHtml(req.body.project.post, {
-        //     allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])
-        // });        
+     
         req.body.project.post = sanitizeHtml(req.body.project.post, {
             allowedTags: ['strong', 'em', 'img', 'p', 'a', 'div'],
             allowedAttributes: {
@@ -54,7 +49,8 @@ router.post("/portfolio", middlewareObject.isLoggedIn, upload.single("image"), f
                 'img': ['src']
             },
             allowedClasses:{
-                'p': ['caption']
+                'p': ['caption'],
+                'div': ['width80']
             }
         });
         Project.create(req.body.project, function(err, project){
@@ -103,7 +99,7 @@ router.put("/portfolio/:id", middlewareObject.isLoggedIn, upload.single('image')
         },
         allowedClasses:{
             'p': ['caption'],
-            'div': ['width50']
+            'div': ['width80']
         }
     });
     Project.findById(req.params.id, async function(err, project){
