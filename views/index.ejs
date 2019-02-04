@@ -22,54 +22,44 @@
 			Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
 			rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.
 		</p>
-		
-		<div class="skills">
 			
-			<div class="programming">
-				<span class="tooltip">
-					<span class="tooltip-text">Programming Languages/ Frameworks</span>
-					<i class="fas fa-code"></i>
-				</span>
-				<ul class="skills-list">
-					<li>Lorem ipsum</li>
-					<li>Lorem ipsum</li>
-					<li>Lorem ipsum</li>
-					<li>Lorem ipsum</li>
-					<li>Lorem ipsum</li>
-				</ul>
+			<div class="skills-container">
+				
+				<div class="skill">
+					<h4>Frontend Skills</h4>
+					<ul class="skills-list">
+						<li><em>Lorem Ipsum</em></li>
+						<li><em>Lorem Ipsum</em></li>
+						<li><em>Lorem Ipsum</em></li>
+						<li><em>Lorem Ipsum</em></li>
+						<li><em>Lorem Ipsum</em></li>
+					</ul>
+				</div>
+				
+				<div class="skill">
+					<h4>Backend Skills</h4>
+					<ul class="skills-list">
+						<li><em>Lorem Ipsum</em></li>
+						<li><em>Lorem Ipsum</em></li>
+						<li><em>Lorem Ipsum</em></li>
+						<li><em>Lorem Ipsum</em></li>
+					</ul>
+				</div>
+				
 			</div>
-			
-			<div class="personal">
-				<span class="tooltip">
-					<span class="tooltip-text">Personal Atrributes</span>
-					<i class="fas fa-user"></i>
-				</span>
-				<ul class="skills-list">
-					<li>Lorem ipsum</li>
-					<li>Lorem ipsum</li>
-					<li>Lorem ipsum</li>
-					<li>Lorem ipsum</li>
-				</ul>
-			</div>
-			
-			<div class="design">
-				<span class="tooltip">
-					<span class="tooltip-text">Planning & Design</span>
-					<i class="fas fa-paint-brush"></i>
-				</span>
-				<ul class="skills-list">
-					<li>Lorem ipsum</li>
-					<li>Lorem ipsum</li>
-				</ul>		
-			</div>
-			
-		</div>
 	</div>
 </section>
 
 <section id="portfolio" class="portfolio">
+	
 	<h1 class="title">Portfolio</h1>
+	
+	<% if(currentUser){ %>
+		<a class="button" href="/portfolio/new">← Add a project</a>
+	<% } %>
+	
 	<div class="section-container">
+		
 		<% if(project_error && project_error.length>0){ %>
 			<div class="flash flash-error flash-margin">
 				<%= project_error %>
@@ -80,9 +70,7 @@
 				<%= project_success %>
 			</div>
 		<% } %>
-		<% if(currentUser){ %>
-			<a class="link" href="/portfolio/new">Add a project</a>
-		<% } %>
+
 		<div class="projects-container">
 			
 				<% projects.forEach(function(project){ %>
