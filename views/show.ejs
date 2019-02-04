@@ -1,7 +1,7 @@
 <% include ./partials/header %>
 <section class="show-page">
     <div class="section-container margin-space-top">
-                <% if(project_update_error && project_update_error.length>0){ %>
+        <% if(project_update_error && project_update_error.length>0){ %>
     		<div class="flash flash-error">
     			<%= project_update_error %>
     		</div>
@@ -23,7 +23,10 @@
         <img src="<%=project.image%>">
 
         <div><p><%-project.post%></p></div>
+        
+        
     </div>
+    <a class="button go-back" href="/#portfolio">← Go back to Portfolio</a>
     
 </section>
 
