@@ -1,13 +1,16 @@
 // HAMBURGER MENU
 var nav = document.querySelector("nav");
 var hamburgerContainer = document.querySelector(".hamburger-container");
+var hamburger = document.querySelector(".hamburger");
 
 // On each Hamburger Menu click: if the navbar is open, close it; if the navbar is closed, open it.
 function open_close_Nav(){
   if(nav.style.animationName === "slideOut"){
     nav.style.animation = "slideIn 1s forwards";
+    hamburger.classList.add("change");
   } else {
     nav.style.animation = "slideOut 1s forwards";
+    hamburger.classList.remove("change");
   }
  }
 
@@ -19,6 +22,7 @@ function checkScrollY(){
   var scrollY = window.scrollY;
   document.addEventListener("scroll", function(){
     scrollY=window.scrollY;
+    hamburger.classList.remove("change");
     if(scrollY>100){
       nav.style.animation = "slideOut 1s forwards";
       hamburgerContainer.style.display = "block";
