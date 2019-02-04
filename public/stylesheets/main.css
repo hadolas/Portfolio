@@ -487,20 +487,11 @@ aside .link {
 .portfolio .indv-project-container {
 	flex: 1 1 350px;
 	position: relative;
-	margin:1%;
+	margin:2%;
 	background-color: #5d5e5d;
 	color: rgba(255,255,255, 1);
 	height: 300px;
 	border: 2px solid #000;
-}
-
-.portfolio .projects-container .indv-project-container:first-child {
-	border-color: red;
-	flex-basis: 98%;
-}
-
-.portfolio .projects-container .indv-project-container:last-child {
-	border-color: blue;
 }
 
 @media (max-width: 600px){
@@ -517,6 +508,7 @@ aside .link {
 	background-position: center;
 	height: 100%;
 	width: 100%;
+	filter: grayscale(50%);
 }
 
 .portfolio .indv-project-container:hover .img {
