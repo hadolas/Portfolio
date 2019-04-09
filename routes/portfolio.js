@@ -68,8 +68,10 @@ router.post("/portfolio", middlewareObject.isLoggedIn, upload.single("image"), f
 router.get("/portfolio/:id", function(req, res) {
     // find Project by id
     Project.findById(req.params.id, function(err, result){
-        if(err){
-            console.log(err);
+        if(err || !result){
+            req.flash("project_error", "Project not found.");
+            // console.log(err);
+            res.redirect("/#portfolio");
         } else {
             res.render("show", {project:result});
         }
@@ -79,13 +81,14 @@ router.get("/portfolio/:id", function(req, res) {
 
 // EDIT ROUTE
 router.get("/portfolio/:id/edit", middlewareObject.isLoggedIn, function(req, res) {
-   Project.findById(req.params.id, function(err, result){
-       if(err){
-           console.log(err);
-       } else {
-           res.render("editProject", {project:result});
-       }
-   }); 
+    Project.findById(req.params.id, function(err, result){
+        if(err || !result){
+            req.flash("project_error", "Could not update project.");
+            res.redirect("/#portfolio");
+        } else {
+            res.render("editProject", {project:result});
+        }
+    }); 
 });
 
 
