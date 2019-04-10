@@ -45,7 +45,7 @@ router.post("/portfolio", middlewareObject.isLoggedIn, upload.single("image"), f
         req.body.project.post = sanitizeHtml(req.body.project.post, {
             allowedTags: ['strong', 'em', 'img', 'p', 'a', 'div'],
             allowedAttributes: {
-                'a':['href'],
+                'a':['href', 'target'],
                 'img': ['src']
             },
             allowedClasses:{
@@ -97,12 +97,12 @@ router.put("/portfolio/:id", middlewareObject.isLoggedIn, upload.single('image')
     req.body.project.post = sanitizeHtml(req.body.project.post, {
         allowedTags: ['strong', 'em', 'img', 'p', 'a', 'div', 'h2', 'h3', 'h4', 'br', 'ul', 'li'],
         allowedAttributes: {
-            'a':['href'],
+            'a':['href', 'target'],
             'img': ['src']
         },
         allowedClasses:{
             'p': ['caption'],
-            'div': ['width80']
+            'div': ['width80'],
         }
     });
     Project.findById(req.params.id, async function(err, project){
