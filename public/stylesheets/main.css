@@ -186,13 +186,13 @@ header nav {
     transform: translateY(-180px);
   }
   100% {
-    transform: translateY(1px);
+    transform: translateY(0px);
   }
 }
 
 @keyframes slideOut {
   0% {
-    transform: translateY(1px);
+    transform: translateY(0px);
   }
   100% {
     transform: translateY(-180px);
