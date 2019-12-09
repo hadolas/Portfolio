@@ -43,7 +43,7 @@ router.post("/portfolio", middlewareObject.isLoggedIn, upload.single("image"), f
         req.body.project.imageId = result.public_id;
      
         req.body.project.post = sanitizeHtml(req.body.project.post, {
-            allowedTags: ['strong', 'em', 'img', 'p', 'a', 'div'],
+            allowedTags: ['strong', 'em', 'img', 'p', 'a', 'div', 'h2', 'h3', 'h4', 'br', 'ul', 'li'],
             allowedAttributes: {
                 'a':['href', 'target'],
                 'img': ['src']
