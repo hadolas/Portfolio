@@ -3,7 +3,13 @@ var router = express.Router();
 var Project = require("../models/project");
 var User = require("../models/user");
 var passport = require("passport");
-var nodemailer = require("nodemailer");
+var API_KEY = process.env.API_KEY;
+var DOMAIN = process.env.DOMAIN;
+var mailgun = require('mailgun-js')({
+    apiKey: API_KEY, 
+    domain: DOMAIN,
+    host: "api.eu.mailgun.net"
+});
 var middlewareObject = require("../middleware");
 
 // INDEX route
@@ -73,28 +79,23 @@ router.post("/send", middlewareObject.checkEmailValidity, function(req, res){
         "</ul>"+
         "<h3>Message: "+ "</h3>" +
         "<p>"+req.body.email.message + "</p>";
-    
-    var transporter = nodemailer.createTransport({
-        service: "Gmail",
-        auth : {
-            user: process.env.EMAIL,
-            pass: process.env.PASS
-        }
-    });
+
     
     var mailOptions = {
-        to: process.env.EMAIL,
-        from: '"Portfolio Contact" <process.env.EMAIL>',
-        subject: "Contact Request from Portfolio",
+        to: process.env.EMAIL_TO,
+        from: 'Portfolio Contact <'+process.env.EMAIL_FROM+'>',
+        subject: "Contact Request from Portfolio by " + req.body.email.name,
         html: output
     }
     
-    transporter.sendMail(mailOptions, function(err){
+    mailgun.messages().send(mailOptions, function(err, body){
         if(err){
             console.log("Message NOT sent due to ERROR");
+            console.log(err);
             req.flash("email_error", "Message not sent due to error.");
         } else {
             console.log("Message sent"); 
+            console.log(body);
             req.flash("email_success", "Message sent!");
         }
         res.redirect("/#contact");
