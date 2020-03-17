@@ -475,7 +475,7 @@ aside .link {
 
 /* Portfolio Styles */
 .portfolio .section-container {
-	width: 80%;
+	width: 100%;
 }
 
 .portfolio .projects-container {
@@ -485,22 +485,13 @@ aside .link {
 }
 
 .portfolio .indv-project-container {
-	flex: 1 1 350px;
+	flex: 0 0 350px;
 	position: relative;
-	margin:2%;
+	margin: 10px;
 	background-color: #5d5e5d;
 	color: rgba(255,255,255, 1);
-	height: 300px;
+	height: 200px;
 	border: 2px solid #000;
-}
-
-@media (max-width: 600px){
-	.portfolio .section-container {
-		width: 98%;
-	}
-	.portfolio .indv-project-container {
-		height: 200px;
-	}
 }
 
 .portfolio .indv-project-container .img {

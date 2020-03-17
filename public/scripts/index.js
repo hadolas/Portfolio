@@ -72,12 +72,3 @@ submit.addEventListener("click", function(){
         console.log("INVALID EMAIL (front-end");
     }
 });
-
-// PORTFOLIO INDV PROJECTS DISPLAY:
-// If total number of projects equates to an odd number, then the most recent project should take up width of row.
-var projects = document.querySelectorAll(".indv-project-container");
-
-if(projects.length%2===1) {
-    console.log(projects[0]);
-    projects[0].style.flexBasis ="98%"
-}
